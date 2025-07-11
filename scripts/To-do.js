@@ -2,8 +2,7 @@ let dataStorage= JSON.parse(localStorage.getItem('dataStorage')) || [{
   date:'2025-7-10',
   task:'Watch youtube'
 }];
-let men = localStorage.setItem('dataStorage',JSON.stringify(dataStorage));
-
+localStorage.setItem('dataStorage',JSON.stringify(dataStorage));
 
 function getInformation(){
   const dateElement =document.querySelector('.js-input-date');
@@ -33,8 +32,9 @@ function renderPage(){
   dataStorage.forEach((data,index)=>{
    html+=`
   <div>
-    ${data.task}-${data.date}  
+   <div class="main-todo"> ${data.task}-${data.date}  
       <button class="js-delete"data-index="${index}">Delete</button>
+    </div>
   </div>
   `;
   });
@@ -64,5 +64,10 @@ document.querySelector('.js-add').addEventListener('click',(button)=>{
   getInformation();
 });
 
+console.log(typeof Sortable);//to check if the ext library is working
 
+new Sortable(document.getElementById('todo-list'), {
+  animation: 150,
+  ghostClass: 'blue-background-class'
+});
 
