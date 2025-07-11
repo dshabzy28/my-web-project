@@ -1,0 +1,24 @@
+.body{
+	padding: 5px;
+	background-color: #102542;
+	color: #f87060;
+}
+.container-todo{
+	padding: 20px;
+	border: 1px solid gray;
+	border-radius: 16px;
+}
+.main-todo{
+	padding: 20px;
+	border: 3px solid;
+	border-radius: 15px;
+}
+.main-todo:hover{
+	background-color: #eee;
+}
+.main-todo button{
+	padding: 5px;
+}
+.main-todo button:hover {
+  background: #e60000;
+}

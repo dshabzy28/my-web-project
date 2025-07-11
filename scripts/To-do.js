@@ -31,14 +31,12 @@ function renderPage(){
   
   dataStorage.forEach((data,index)=>{
    html+=`
-  <div>
    <div class="main-todo"> ${data.task}-${data.date}  
       <button class="js-delete"data-index="${index}">Delete</button>
     </div>
-  </div>
   `;
   });
-  document.querySelector('.js-paragraph').innerHTML=html;
+  document.querySelector('.container-todo').innerHTML=html;
 
   document.querySelectorAll('.js-delete').forEach((button) => {
     button.addEventListener('click', (e) => {
