@@ -1,7 +1,8 @@
-dataStorage=[{
-  date:'10-7-2025',
+let dataStorage= JSON.parse(localStorage.getItem('dataStorage')) || [{
+  date:'2025-7-10',
   task:'Watch youtube'
 }];
+let men = localStorage.setItem('dataStorage',JSON.stringify(dataStorage));
 
 
 function getInformation(){
@@ -20,6 +21,8 @@ function getInformation(){
 
   document.querySelector('.js-input').value='';
   document.querySelector('.js-input-date').value='';
+
+  localStorage.setItem('dataStorage',JSON.stringify(dataStorage));
 
 };
 
@@ -48,6 +51,9 @@ function renderPage(){
 };
 function removeData(index) {
   dataStorage.splice(index, 1);
+
+  localStorage.setItem('dataStorage',JSON.stringify(dataStorage));
+
   renderPage();
 }
 
@@ -57,4 +63,6 @@ renderPage();
 document.querySelector('.js-add').addEventListener('click',(button)=>{
   getInformation();
 });
+
+
 
