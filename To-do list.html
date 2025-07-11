@@ -1,4 +1,4 @@
-<!DOCTYPE html>2
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,21 +7,34 @@
     <title>To do list </title>
 </head>
 <body class="body">
-    <div class="header">
-        <h1><p>TO-DO lIST</p></h1>
-    </div>
-   
+	<div class="header">
+		<div class="left-header">
+			<h1><p>TO-DO LIST</p></h1>
+		</div>
 
+		<div class="middle-header">
 
+		</div>
 
-    <input class="js-input" placeholder="TASK" type="text">
-    <input type="date" class="js-input-date">
-    <button class="js-add">Add</button>
-    <div id="todo-list"class="container-todo"></div>
+				<div class="right-header">
 
+		</div>
+	</div>
+	
+	<div class="content">
+		<div class="data-input">
+			<input class="js-input" placeholder="TASK" type="text">
+			<input type="date" class="js-input-date">
+			<button class="js-add">Add</button>
+		</div>
+		<div id="todo-list"class="container-todo"></div>
+	</div>
 
-    <script type ="module" src="./scripts/To-do.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-    
+	<div class="footer">
+
+	</div>
+	<script type ="module" src="./scripts/To-do.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+	
 </body>
 </html>

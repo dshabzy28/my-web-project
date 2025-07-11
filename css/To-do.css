@@ -3,6 +3,24 @@
 	background-color: #102542;
 	color: #f87060;
 }
+.data-input{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 20px;
+}
+.js-input{
+	padding: 10px;
+	border-radius: 10px;
+}
+.js-input-date{
+	padding: 10px;
+	border-radius: 9px;
+}
+.js-add{
+	padding: 10px;
+	border-radius: 9px;
+}
+
 .container-todo{
 	padding: 20px;
 	border: 1px solid gray;
@@ -12,13 +30,16 @@
 	padding: 20px;
 	border: 3px solid;
 	border-radius: 15px;
+	cursor: grab;
 }
 .main-todo:hover{
 	background-color: #eee;
 }
 .main-todo button{
 	padding: 5px;
+	background-color: rgb(182, 53, 53);
 }
 .main-todo button:hover {
   background: #e60000;
+  cursor: pointer;
 }
