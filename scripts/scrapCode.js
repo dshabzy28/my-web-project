@@ -6,7 +6,3 @@ new Sortable(document.getElementById('todo-list'), {
     console.log(evt.oldIndex, evt.newIndex);
   }
 });
-new Sortable(document.getElementById('todo-list'), {
-  animation: 150,
-  ghostClass: 'blue-background-class'
-});

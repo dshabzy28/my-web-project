@@ -31,8 +31,12 @@ function renderPage(){
   
   dataStorage.forEach((data,index)=>{
    html+=`
-   <div class="main-todo"> ${data.task}-${data.date}  
-      <button class="js-delete"data-index="${index}">Delete</button>
+   <div class="main-todo">
+      <div> ${data.task}</div>
+      <div>${data.date}</div> 
+      <div class="delete-button">
+        <button class="js-delete"data-index="${index}">Delete</button>
+      </div>
     </div>
   `;
   });
@@ -66,6 +70,9 @@ console.log(typeof Sortable);//to check if the ext library is working
 
 new Sortable(document.getElementById('todo-list'), {
   animation: 150,
-  ghostClass: 'blue-background-class'
+  ghostClass: 'blue-background-class',
+
 });
+
+
 

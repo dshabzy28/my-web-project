@@ -3,30 +3,44 @@
 	background-color: #102542;
 	color: #f87060;
 }
+
 .data-input{
-	display: flex;
-	justify-content: center;
 	margin-bottom: 20px;
 }
 .js-input{
-	padding: 10px;
+	padding: 11px;
+	border-radius: 10px;
+}
+.js-input:hover{
+	padding: 15px;
 	border-radius: 10px;
 }
 .js-input-date{
 	padding: 10px;
 	border-radius: 9px;
 }
+.js-input-date:hover{
+	padding: 14px;
+	animation: 3s ease-in 1s infinite reverse both running slide-in;
+}
 .js-add{
 	padding: 10px;
 	border-radius: 9px;
 }
-
+.js-add:hover{
+	padding: 15px;
+	background-color: #06d6a0;
+}
 .container-todo{
 	padding: 20px;
 	border: 1px solid gray;
 	border-radius: 16px;
+	
 }
 .main-todo{
+	display: grid;
+	grid-template-columns: repeat(3, 1fr); 
+	gap: 10px;
 	padding: 20px;
 	border: 3px solid;
 	border-radius: 15px;
@@ -43,3 +57,8 @@
   background: #e60000;
   cursor: pointer;
 }
+.delete-button{
+	display: flex;
+	justify-content:flex-end;
+}
+
