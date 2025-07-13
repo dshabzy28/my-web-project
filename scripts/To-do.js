@@ -1,4 +1,4 @@
-let dataStorage= JSON.parse(localStorage.getItem('dataStorage')) || [{
+export let dataStorage= JSON.parse(localStorage.getItem('dataStorage')) || [{
   date:'2025-7-10',
   task:'Watch youtube'
 }];
@@ -32,7 +32,12 @@ function renderPage(){
   dataStorage.forEach((data,index)=>{
    html+=`
    <div class="main-todo">
-      <div> ${data.task}</div>
+      <div>		
+      <label class="custom-checkbox">
+      <input type="checkbox">
+      <span class="checkmark"></span>
+      </label>
+       ${data.task}</div>
       <div>${data.date}</div> 
       <div class="delete-button">
         <button class="js-delete"data-index="${index}">Delete</button>

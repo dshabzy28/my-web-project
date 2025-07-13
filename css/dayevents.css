@@ -1,0 +1,25 @@
+body{
+  padding: 5px;
+  background-color: #102542;
+  color: #f87060;
+}
+.main-container{
+  display: grid;  
+  grid-template-columns:repeat(4, 1fr);  
+  row-gap: 20px; 
+  column-gap: 20px;
+}
+.main-container div{
+  display: flex;
+  padding: 20px;
+  background-color: magenta;
+  height: 100px;
+  align-items:center;
+  justify-content: center;
+  color: black;
+}
+.blue-background-class {
+  background-color: lightblue;
+  opacity: 0.7;
+  border: 1px solid lightblue;
+}
