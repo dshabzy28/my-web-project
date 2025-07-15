@@ -1,6 +1,7 @@
 export let dataStorage= JSON.parse(localStorage.getItem('dataStorage')) || [{
   date:'2025-7-10',
-  task:'Watch youtube'
+  task:'Watch youtube',
+  priority:'high'
 }];
 localStorage.setItem('dataStorage',JSON.stringify(dataStorage));
 
@@ -13,7 +14,8 @@ function getInformation(){
 
   dataStorage.push({
     date,
-    task
+    task,
+
   });
 
   renderPage();
@@ -79,5 +81,46 @@ new Sortable(document.getElementById('todo-list'), {
 
 });
 
+document.querySelector('.list-button')
+.addEventListener('click',(button)=>{
+  document.querySelector('.list-input')
+  .classList.add('list-input-2'),
+   document.querySelector('.list-add')
+  .classList.add('list-add-2')
+});
+
+let newLists=JSON.parse(localStorage.getItem('newlists')) || [];
+
+localStorage.setItem('newLists',JSON.stringify(newLists));
+let hello ='';
+
+function renderLists(){
+
+  newLists.forEach((list)=>{
+  hello+=`
+  <div>${list}</div>
+  `});
+  localStorage.setItem('newLists',JSON.stringify(newLists));
+  document.querySelector('.new-list').innerHTML=hello;
+};
+
+function leftGetValue(){
+  const inputElement=document.querySelector('.list-input');
+  const leftInput= inputElement.value;
+
+  newLists.push(leftInput);
+
+  document.querySelector('.list-input').value='';
+  renderLists(newLists);
+  console.log(leftInput)
+  console.log(newLists)
+
+}
+renderLists(newLists);
 
 
+
+document.querySelector('.list-add')
+.addEventListener('click',()=>{
+  leftGetValue()
+})

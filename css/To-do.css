@@ -2,6 +2,8 @@
 	padding: 5px;
 	background-color: #102542;
 	color: #f87060;
+	display: grid;
+	grid-template-columns: 200px 2.5fr 1fr;
 }
 
 .data-input{
@@ -21,7 +23,6 @@
 }
 .js-input-date:hover{
 	padding: 14px;
-	animation: 3s ease-in 1s infinite reverse both running slide-in;
 }
 .js-add{
 	padding: 10px;
@@ -69,7 +70,6 @@
 	padding: 50px;
 }
 
-
 /* Hide the default checkbox */
 .custom-checkbox input[type="checkbox"] {
   display: none;
@@ -113,4 +113,15 @@
   display: block;
 }
 
-
+.list-input{
+display: none;
+}
+.list-input-2{
+display: block;
+}
+.list-add{
+display: none;
+}
+.list-add-2{
+	display: block;
+}
