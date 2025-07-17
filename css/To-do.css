@@ -125,3 +125,12 @@ display: none;
 .list-add-2{
 	display: block;
 }
+
+.calendar-container {
+  max-width: 300px;
+  margin: auto;
+  background: #1e1e1e;
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+}

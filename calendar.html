@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>To-Do Calendar</title>
+
+    <!-- ✅ FullCalendar CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet" />
+
+    <style>
+      body {
+        background-color: #121212;
+        color: white;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      #calendar {
+        max-width: 500px;
+        margin: auto;
+        background-color: white;
+        border-radius: 10px;
+        padding: 10px;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>📅 Embedded Calendar</h2>
+    <div id="calendar"></div>
+
+    <!-- ✅ FullCalendar JS (must match the CSS version) -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const calendarEl = document.getElementById("calendar");
+
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: "dayGridMonth",
+          dateClick: function (info) {
+            alert("You clicked: " + info.dateStr);
+            console.log("Date selected:", info.dateStr);
+            // You can call your task filter function here:
+            filterTasksByDate(info.dateStr);
+          }
+        });
+
+        calendar.render();
+      });
+    </script>
+  </body>
+</html>

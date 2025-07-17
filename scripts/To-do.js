@@ -28,7 +28,6 @@ function getInformation(){
 };
 
 function renderPage(){
-
   let html ='';
   
   dataStorage.forEach((data,index)=>{
@@ -54,18 +53,14 @@ function renderPage(){
       const index = e.target.getAttribute('data-index');
       removeData(index);
     });
-  });
-
-  
+  }); 
 };
+
 function removeData(index) {
   dataStorage.splice(index, 1);
-
   localStorage.setItem('dataStorage',JSON.stringify(dataStorage));
-
   renderPage();
 }
-
 
 renderPage();
 
@@ -78,9 +73,9 @@ console.log(typeof Sortable);//to check if the ext library is working
 new Sortable(document.getElementById('todo-list'), {
   animation: 150,
   ghostClass: 'blue-background-class',
-
 });
 
+//left side of the page
 document.querySelector('.list-button')
 .addEventListener('click',(button)=>{
   document.querySelector('.list-input')
@@ -95,7 +90,6 @@ localStorage.setItem('newLists',JSON.stringify(newLists));
 let hello ='';
 
 function renderLists(){
-
   newLists.forEach((list)=>{
   hello+=`
   <div>${list}</div>
@@ -114,13 +108,57 @@ function leftGetValue(){
   renderLists(newLists);
   console.log(leftInput)
   console.log(newLists)
-
 }
 renderLists(newLists);
-
-
 
 document.querySelector('.list-add')
 .addEventListener('click',()=>{
   leftGetValue()
-})
+});
+
+//right hand side
+document.addEventListener("DOMContentLoaded", function () {
+  const calendarEl = document.getElementById("calendar");
+
+  const calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: "dayGridMonth",
+    dateClick: function (info) {
+    // alert("You clicked: " + info.dateStr);
+      console.log("Date selected:", info.dateStr);
+      
+      filterTasksByDate(info.dateStr);
+    }
+  });
+  calendar.render();
+});
+
+// just know info.dateStr is the day clickesd on the calendar
+let sameDate='';
+
+function filterTasksByDate(date){
+  dataStorage.forEach((dates)=>{
+    if (date===dates.date) {
+    sameDate=dates
+    }
+  });
+  console.log(sameDate);
+  updateRenderPage(sameDate);
+}
+function updateRenderPage(sameDate,index){
+  let newHtml='';
+  newHtml+=`
+    <div class="main-todo">
+    <div>		
+    <label class="custom-checkbox">
+    <input type="checkbox">
+    <span class="checkmark"></span>
+    </label>
+      ${sameDate.task}</div>
+    <div>${sameDate.date}</div> 
+    <div class="delete-button">
+      <button class="js-delete"data-index="${index}">Delete</button>
+    </div>
+  </div>
+  `;
+  document.querySelector('.container-todo').innerHTML=newHtml;
+}
