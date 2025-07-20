@@ -69,7 +69,22 @@
 .todo-check:hover{
 	padding: 50px;
 }
-
+.content-header {
+	display: flex;
+	justify-content: space-between;
+}
+.js-show{
+	background-color: white;
+	height: 50px;
+	width: 70px;
+	margin-top: 15px;
+	margin-right: 30px;
+	border-radius: 10px;
+	cursor: pointer;
+}
+.js-show:hover{
+	background-color: #06d6a0;
+}
 /* Hide the default checkbox */
 .custom-checkbox input[type="checkbox"] {
   display: none;
@@ -134,3 +149,11 @@ display: none;
   border-radius: 10px;
   padding: 10px;
 }
+.fc-daygrid-day:hover {
+  background-color: #444;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+
+

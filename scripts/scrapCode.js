@@ -6,3 +6,18 @@ new Sortable(document.getElementById('todo-list'), {
     console.log(evt.oldIndex, evt.newIndex);
   }
 });
+
+
+let sameDate=[];
+
+function filterTasksByDate(date){
+  dataStorage.forEach((dates)=>{
+    if (date===dates.date) {
+    sameDate=dates ,updateRenderPage(sameDate)
+    } else if(date !==dates.date){
+      noTaskAvailable()
+    }
+  });
+  
+  console.log(sameDate);
+}

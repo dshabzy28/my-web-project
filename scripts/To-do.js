@@ -68,6 +68,8 @@ document.querySelector('.js-add').addEventListener('click',(button)=>{
   getInformation();
 });
 
+document.querySelector('.js-show').addEventListener('click',renderPage);
+
 console.log(typeof Sortable);//to check if the ext library is working
 
 new Sortable(document.getElementById('todo-list'), {
@@ -124,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
     initialView: "dayGridMonth",
     dateClick: function (info) {
     // alert("You clicked: " + info.dateStr);
-      console.log("Date selected:", info.dateStr);
+     // console.log("Date selected:", info.dateStr);
       
       filterTasksByDate(info.dateStr);
     }
@@ -132,21 +134,23 @@ document.addEventListener("DOMContentLoaded", function () {
   calendar.render();
 });
 
-// just know info.dateStr is the day clickesd on the calendar
-let sameDate='';
+// just know info.dateStr is the day clicked on the calendar
+let sameDate=[];
 
-function filterTasksByDate(date){
-  dataStorage.forEach((dates)=>{
-    if (date===dates.date) {
-    sameDate=dates
-    }
-  });
+function filterTasksByDate(date) {
+  sameDate = dataStorage.filter(d => d.date === date);
+  if (sameDate.length > 0) {
+    updateRenderPage(sameDate);
+  } else {
+    noTaskAvailable();
+  }
   console.log(sameDate);
-  updateRenderPage(sameDate);
-}
+};
+
 function updateRenderPage(sameDate,index){
-  let newHtml='';
-  newHtml+=`
+    let newHtml='';
+  sameDate.forEach((sameDate,index)=>{
+    newHtml+=`
     <div class="main-todo">
     <div>		
     <label class="custom-checkbox">
@@ -160,5 +164,15 @@ function updateRenderPage(sameDate,index){
     </div>
   </div>
   `;
+  })
   document.querySelector('.container-todo').innerHTML=newHtml;
+};
+function noTaskAvailable(){
+  let noTask='';
+  noTask+=`
+    <div class="main-todo">
+    <div>NO TASK AVAILABLE</div>
+    </div>
+  `
+   document.querySelector('.container-todo').innerHTML=noTask;
 }
