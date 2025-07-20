@@ -195,7 +195,6 @@ function setAdate(){
     greeting='Good Night'
   };
 // is should be on render page
-
   dateHtml=`
   <div>${day}</div>
   <div class=display-time>
@@ -204,7 +203,5 @@ function setAdate(){
   </div>
   `
   document.querySelector('.content-header').innerHTML=dateHtml;
-  
 }
-
 setAdate()

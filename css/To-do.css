@@ -109,6 +109,7 @@
   position: relative;
   vertical-align: middle;
   margin-right: 8px;
+	cursor: pointer;
 }
 
 /* Checked state */
