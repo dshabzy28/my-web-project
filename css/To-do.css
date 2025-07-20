@@ -69,7 +69,15 @@
 .todo-check:hover{
 	padding: 50px;
 }
-.content-header {
+.content-header{
+	display: grid;
+	grid-template-columns: 50px 1fr ;
+	margin-bottom: 20px;
+}
+.content-header div{
+	font-size: 30px;
+}
+.content-header-2{
 	display: flex;
 	justify-content: space-between;
 }

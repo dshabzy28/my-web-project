@@ -1,3 +1,5 @@
+import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
+
 export let dataStorage= JSON.parse(localStorage.getItem('dataStorage')) || [{
   date:'2025-7-10',
   task:'Watch youtube',
@@ -176,3 +178,33 @@ function noTaskAvailable(){
   `
    document.querySelector('.container-todo').innerHTML=noTask;
 }
+let dateHtml='';
+function setAdate(){
+  const today = dayjs();
+  const day=today.format('MMM D')
+  const hour =today.hour();
+  let greeting='';
+
+  if(hour>=0 &&hour<=12){
+   greeting='Good Morning'
+  }else if (hour>=12 && hour<=17) {
+    greeting='Good Afternoon'
+  } else if (hour>=18 && hour<=21){
+    greeting='Good Evening'
+  }else if (hour>=21 && hour<=23){
+    greeting='Good Night'
+  };
+// is should be on render page
+
+  dateHtml=`
+  <div>${day}</div>
+  <div class=display-time>
+    <div>${greeting}</div>
+   <div> What's your plan for today?</div>
+  </div>
+  `
+  document.querySelector('.content-header').innerHTML=dateHtml;
+  
+}
+
+setAdate()
