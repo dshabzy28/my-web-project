@@ -1,10 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My Web Project</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/To-do.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-calendar@latest/build/vanilla-calendar.min.css" />
+    <title>To do list </title>
 </head>
-<body>
-  <h1>Hello, GitHub Pages!</h1>
+<body class="body">
+	<div class="header">
+		<div class="left-header">
+			<h1>TO-DO LIST</h1>
+		</div>
+		<div class="right-header">
+			<p>My lists</p>
+			<div class="new-list"></div>
+			<button class="list-button">+New list</button>
+			<button class="list-add">Add</button>
+			<input type="text" class="list-input">
+		</div>
+	</div>
+	
+	<div class="content">
+		<div class="content-header">
+
+		</div>
+		<div class="data-input">
+			<input class="js-input" placeholder="TASK" type="text">
+			<input type="date" class="js-input-date">
+			<button class="js-add">Add</button>
+		</div>
+		<div class="content-header-2">
+			<h1>UPCOMING EVENT</h1>
+			<button class="js-show">Show all Tasks</button>
+		</div>
+		<div id="todo-list"class="container-todo"></div>
+	</div>
+
+	<div class="footer">
+    <h2>📅 Embedded Calendar</h2>
+    <div id="calendar"></div>
+		<a href="./dayevents.html">Next page</a>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+	   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+	<script type ="module" src="./scripts/To-do.js"></script>
 </body>
 </html>
