@@ -17,7 +17,6 @@ function getInformation(){
   dataStorage.push({
     date,
     task,
-
   });
 
   renderPage();
@@ -26,7 +25,6 @@ function getInformation(){
   document.querySelector('.js-input-date').value='';
 
   localStorage.setItem('dataStorage',JSON.stringify(dataStorage));
-
 };
 
 function renderPage(){
@@ -80,46 +78,58 @@ new Sortable(document.getElementById('todo-list'), {
 });
 
 //left side of the page
+//left side of the page
 document.querySelector('.list-button')
-.addEventListener('click',(button)=>{
-  document.querySelector('.list-input')
-  .classList.add('list-input-2'),
-   document.querySelector('.list-add')
-  .classList.add('list-add-2')
+.addEventListener('click',()=>{
+  const list= document.querySelector('.list-input');
+  const add = document.querySelector('.list-add');
+ 
+  list.classList.add('list-input-2'),
+  add.classList.add('list-add-2');
 });
 
-let newLists=JSON.parse(localStorage.getItem('newlists')) || [];
-
+let newLists=JSON.parse(localStorage.getItem('newLists'))||[] ;
 localStorage.setItem('newLists',JSON.stringify(newLists));
-let hello ='';
 
 function renderLists(){
+  let hello ='';
   newLists.forEach((list)=>{
   hello+=`
-  <div>${list}</div>
+  <div>${list} <button class="list-delete">x</div></div>
   `});
-  localStorage.setItem('newLists',JSON.stringify(newLists));
-  document.querySelector('.new-list').innerHTML=hello;
+ document.querySelector('.new-list').innerHTML=hello;
 };
+renderLists()
 
 function leftGetValue(){
   const inputElement=document.querySelector('.list-input');
   const leftInput= inputElement.value;
+  document.querySelector('.list-input').value='';
 
   newLists.push(leftInput);
-
-  document.querySelector('.list-input').value='';
-  renderLists(newLists);
-  console.log(leftInput)
+  renderLists()
+  localStorage.setItem('newLists',JSON.stringify(newLists));
   console.log(newLists)
-}
-renderLists(newLists);
+};
 
 document.querySelector('.list-add')
-.addEventListener('click',()=>{
-  leftGetValue()
-});
+.addEventListener('click',function() {
+    leftGetValue();
+    controlAdd()}
+);
 
+function controlAdd(){
+  const list= document.querySelector('.list-input');
+  const add = document.querySelector('.list-add');
+
+  if(list.classList.contains('list-input-2')){
+    list.classList.remove('list-input-2');
+  };
+  if(add.classList.contains('list-add-2')){
+    add.classList.remove('list-add-2');
+  };
+};
+//right hand side
 //right hand side
 document.addEventListener("DOMContentLoaded", function () {
   const calendarEl = document.getElementById("calendar");
@@ -129,13 +139,11 @@ document.addEventListener("DOMContentLoaded", function () {
     dateClick: function (info) {
     // alert("You clicked: " + info.dateStr);
      // console.log("Date selected:", info.dateStr);
-      
       filterTasksByDate(info.dateStr);
     }
   });
   calendar.render();
 });
-
 // just know info.dateStr is the day clicked on the calendar
 let sameDate=[];
 
@@ -176,7 +184,7 @@ function noTaskAvailable(){
     <div>NO TASK AVAILABLE</div>
     </div>
   `
-   document.querySelector('.container-todo').innerHTML=noTask;
+  document.querySelector('.container-todo').innerHTML=noTask;
 }
 let dateHtml='';
 function setAdate(){
@@ -204,4 +212,4 @@ function setAdate(){
   `
   document.querySelector('.content-header').innerHTML=dateHtml;
 }
-setAdate()
+setAdate();

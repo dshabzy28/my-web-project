@@ -1,9 +1,18 @@
 .body{
-	padding: 5px;
 	background-color: #102542;
 	color: #f87060;
 	display: grid;
-	grid-template-columns: 200px 2.5fr 1fr;
+	grid-template-columns: 250px 2.2fr 1fr;
+}
+.header{
+	background-color: #07162bd2;
+	margin-right: 20px;
+	height: 98vh;
+}
+.footer{
+	background-color: #07162bd2;
+	margin-left: 20px;
+	height: 98vh;
 }
 
 .data-input{
@@ -136,20 +145,44 @@
 .custom-checkbox input[type="checkbox"]:checked + .checkmark::after {
   display: block;
 }
-
+.list-button{
+	padding: 10px;
+	border-radius: 10px;
+}
+.list-button:hover{
+	background-color: #06d6a0;
+}
 .list-input{
-display: none;
+	display: none;
 }
 .list-input-2{
-display: block;
+	display: block;
+	padding: 10px;
 }
 .list-add{
 display: none;
 }
 .list-add-2{
 	display: block;
+	border-radius: 10px;
+	padding:10px ;
 }
-
+.list-add-2:hover{
+	background-color: #06d6a0;
+}
+.list-delete{
+	background-color: white;
+	padding: 5px 10px;
+	border-radius: 10px;
+}
+.list-delete:hover{
+	background-color: #e60000;
+}
+.new-list div{
+	font-size: 30px;
+	font-weight: 900;
+	gap: 10px;
+}
 .calendar-container {
   max-width: 300px;
   margin: auto;
