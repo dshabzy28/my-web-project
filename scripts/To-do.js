@@ -93,13 +93,21 @@ localStorage.setItem('newLists',JSON.stringify(newLists));
 
 function renderLists(){
   let hello ='';
-  newLists.forEach((list)=>{
+  newLists.forEach((list,index)=>{
   hello+=`
-  <div>${list} <button class="list-delete">x</div></div>
+  <div>${list}<button class="list-delete"data-index="${index}">x</button></div>
   `});
  document.querySelector('.new-list').innerHTML=hello;
+
+ document.querySelectorAll('.list-delete').forEach((button)=>{
+  button.addEventListener('click', (e) => {
+    const index = e.target.getAttribute('data-index');
+    removeListData(index);
+   // console.log(index);
+  });
+}); 
 };
-renderLists()
+renderLists();
 
 function leftGetValue(){
   const inputElement=document.querySelector('.list-input');
@@ -107,16 +115,24 @@ function leftGetValue(){
   document.querySelector('.list-input').value='';
 
   newLists.push(leftInput);
-  renderLists()
   localStorage.setItem('newLists',JSON.stringify(newLists));
-  console.log(newLists)
+  renderLists();
+  console.log(newLists);
 };
 
 document.querySelector('.list-add')
 .addEventListener('click',function() {
-    leftGetValue();
-    controlAdd()}
-);
+  leftGetValue();
+  controlAdd();
+});
+
+
+
+function removeListData(index){
+  newLists.splice(index,1);
+  localStorage.setItem('newLists',JSON.stringify(newLists));
+  renderLists();
+ };
 
 function controlAdd(){
   const list= document.querySelector('.list-input');
@@ -129,6 +145,7 @@ function controlAdd(){
     add.classList.remove('list-add-2');
   };
 };
+
 //right hand side
 //right hand side
 document.addEventListener("DOMContentLoaded", function () {
@@ -157,7 +174,7 @@ function filterTasksByDate(date) {
   console.log(sameDate);
 };
 
-function updateRenderPage(sameDate,index){
+function updateRenderPage(sameDate){
     let newHtml='';
   sameDate.forEach((sameDate,index)=>{
     newHtml+=`
@@ -170,12 +187,21 @@ function updateRenderPage(sameDate,index){
       ${sameDate.task}</div>
     <div>${sameDate.date}</div> 
     <div class="delete-button">
-      <button class="js-delete"data-index="${index}">Delete</button>
+      <button class="js-delete-2"data-index="${index}">Delete</button>
     </div>
   </div>
   `;
   })
-  document.querySelector('.container-todo').innerHTML=newHtml;
+    document.querySelector('.container-todo').innerHTML=newHtml;
+  //review this code
+   document.querySelectorAll('.js-delete-2').forEach((button) => {
+    button.addEventListener('click', (e) => {
+     // const index = e.target.getAttribute('data-index');
+      //removeData(index);
+      console.log('hello')
+    });
+  }); 
+
 };
 function noTaskAvailable(){
   let noTask='';
