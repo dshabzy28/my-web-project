@@ -14,11 +14,16 @@ function getInformation(){
   const taskElement= document.querySelector('.js-input');
   const task = taskElement.value;
 
+  const priorityElement=document.getElementById('Proirity');
+  const priority=priorityElement.value;
+
   dataStorage.push({
     date,
     task,
+    priority
   });
 
+  console.log(priority);
   renderPage();
 
   document.querySelector('.js-input').value='';
@@ -39,7 +44,7 @@ function renderPage(){
       <span class="checkmark"></span>
       </label>
        ${data.task}</div>
-      <div>${data.date}</div> 
+      <div>${data.date}</div>
       <div class="delete-button">
         <button class="js-delete"data-index="${index}">Delete</button>
       </div>
@@ -125,8 +130,6 @@ document.querySelector('.list-add')
   leftGetValue();
   controlAdd();
 });
-
-
 
 function removeListData(index){
   newLists.splice(index,1);
@@ -239,3 +242,39 @@ function setAdate(){
   document.querySelector('.content-header').innerHTML=dateHtml;
 }
 setAdate();
+//sort tasks by prioriy
+
+let sortDate=[];
+document.querySelector('.js-high').addEventListener('click',()=>{filterTasksByPriority('High')})
+document.querySelector('.js-mid').addEventListener('click',()=>{filterTasksByPriority('Mid')})
+document.querySelector('.js-low').addEventListener('click',()=>{filterTasksByPriority('Low')})
+
+function filterTasksByPriority(value) {
+  sortDate = dataStorage.filter(p => p.priority === value);
+  if (sortDate.length > 0) {
+   renderSorting(sortDate)
+  } else {
+    noTaskAvailable();
+  }
+  console.log(sortDate);
+};
+function renderSorting(sortDate){
+    let sortHtml='';
+  sortDate.forEach((sortDate,index)=>{
+    sortHtml+=`
+    <div class="main-todo">
+    <div>		
+    <label class="custom-checkbox">
+    <input type="checkbox">
+    <span class="checkmark"></span>
+    </label>
+      ${sortDate.task}</div>
+    <div>${sortDate.date}</div> 
+    <div class="delete-button">
+      <button class="js-delete-2"data-index="${index}">Delete</button>
+    </div>
+  </div>
+  `;
+  })
+  document.querySelector('.container-todo').innerHTML=sortHtml;
+};

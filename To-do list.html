@@ -28,6 +28,13 @@
 		<div class="data-input">
 			<input class="js-input" placeholder="TASK" type="text">
 			<input type="date" class="js-input-date">
+
+			<label for="Proirity">Choose a Proirity:</label>
+		<select id="Proirity">
+			<option value="High">High</option>
+			<option value="Mid">Mid</option>
+			<option value="Low">Low</option>
+		</select>
 			<button class="js-add">Add</button>
 		</div>
 		<div class="content-header-2">
@@ -41,6 +48,16 @@
     <h2>📅 Embedded Calendar</h2>
     <div id="calendar"></div>
 		<a href="./dayevents.html">Next page</a>
+		<h1>sort</h1>
+		<button>date</button>
+		<button class="js-priority">priority</button>
+		<button>name</button>
+		<div class="forsorting">
+			<button class="js-high" value="High">high</button>
+			<button class="js-mid" value="Mid">mid</button>
+			<button class="js-low" value="Low">low</button>
+		</div>
+
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 	   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
