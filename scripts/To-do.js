@@ -81,7 +81,7 @@ new Sortable(document.getElementById('todo-list'), {
   animation: 150,
   ghostClass: 'blue-background-class',
 });
-
+//left side of the page
 //left side of the page
 //left side of the page
 document.querySelector('.list-button')
@@ -148,7 +148,7 @@ function controlAdd(){
     add.classList.remove('list-add-2');
   };
 };
-
+//right hand side
 //right hand side
 //right hand side
 document.addEventListener("DOMContentLoaded", function () {
